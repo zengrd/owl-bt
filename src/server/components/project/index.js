@@ -8,6 +8,7 @@ const reload = require('require-reload')(require);
 
 const projectFileName = 'owl-bt.json';
 const pluginFileName = 'owl-bt.js';
+const templatePath = '../../../../bin/templates';
 
 
 function getParentPath(absolutePath) {
@@ -37,10 +38,13 @@ function getProjectForDir(currentAbsolutePath) {
       if (err.code !== errors.ENOENT.code) {
         throw err;
       } else {
+        /* 
         var parentPath = getParentPath(currentAbsolutePath);
         if (parentPath) {
           return getProjectForDir(parentPath);
         }
+        */
+        return getProjectForDir(templatePath);
       }
     });
 }

@@ -1,6 +1,6 @@
 {
   "name": "owl-bt",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "owl-bt is editor for Behavior trees. It has been inspired by Unreal engine behavior trees in a way, that it supports special node items like decorators and services. This makes trees smaller and much more readable.",
   "keywords": [
     "game",
@@ -55,7 +55,7 @@
     "string_score": "^0.1.22",
     "toposort-class": "^1.0.1",
     "undo-manager": "~1.0.5",
-    "yargs": "^7.1.0"
+    "yargs": "^7.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -80,7 +80,7 @@
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
     "webpack-hot-middleware": "^2.25.0"
