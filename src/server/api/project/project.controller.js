@@ -1,7 +1,8 @@
 'use strict';
-
+const fs = require('fs');
 const path = require('path');
 const project = require('../../components/project');
+const projectJson = require('../../../../project.json');
 
 exports.index = function(req, res, next) {
   let treePath = req.query.path;
@@ -27,3 +28,67 @@ exports.index = function(req, res, next) {
     });
 
 };
+
+/*
+暂时不需要，有需要后续再加
+
+function traverseFolder(folderPath) {
+  const result = [];
+  const files = fs.readdirSync(folderPath);
+
+  for (const file of files) {
+    const filePath = path.join(folderPath, file);
+    const isDirectory = fs.statSync(filePath).isDirectory();
+    const extname = path.extname(filePath);
+
+    if (!isDirectory) {
+      if (extname !== '.json')continue;
+    }
+
+    result.push({
+      path: filePath,
+      isDirectory: isDirectory,
+    });
+  }
+
+  return result;
+}
+
+exports.fileList = function(req, res, next) {
+  let projectDir = req.query.path;
+  if (projectDir){
+    let result = traverseFolder(projectDir);
+    res.contentType('application/json').send(result);
+  }
+  else if(projectJson.projectDir){
+    let result = traverseFolder(projectJson.projectDir);
+    res.contentType('application/json').send(result);
+  }
+  else{
+    default_dir = path.join(__dirname, '../../../bin/templates');
+    let result = traverseFolder(default_dir);
+    res.contentType('application/json').send(result);
+  }
+  return
+};
+
+
+exports.parentFileList = function(req, res, next) {
+  let projectDir = req.query.path;
+  if (projectDir){
+    parentDir = project.getParentPath(projectDir)
+    let result = traverseFolder(parentDir);
+    res.contentType('application/json').send(result);
+  }
+  else if(projectJson.projectDir){
+    let result = traverseFolder(projectJson.projectDir);
+    res.contentType('application/json').send(result);
+  }
+  else{
+    default_dir = path.join(__dirname, '../../../bin/templates');
+    let result = traverseFolder(default_dir);
+    res.contentType('application/json').send(result);
+  }
+  return
+};
+*/

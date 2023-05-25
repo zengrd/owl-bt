@@ -8,7 +8,7 @@ const reload = require('require-reload')(require);
 
 const projectFileName = 'owl-bt.json';
 const pluginFileName = 'owl-bt.js';
-const templatePath = '../../../../bin/templates';
+const templatePath = path.join(__dirname, '../../../bin/templates');
 
 
 function getParentPath(absolutePath) {
@@ -54,5 +54,6 @@ function getProject(treePath) {
 }
 
 module.exports = {
-  getProject: getProject
+  getProject: getProject,
+  getParentPath: getParentPath
 };

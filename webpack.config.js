@@ -12,15 +12,15 @@ module.exports = (env, options) => {
       './src/client/index.js'
     ],
     output: {
+      globalObject: 'this', // 添加这个选项
       path: path.resolve(__dirname, 'dist'),
-      filename: 'bundle.[hash].js'
+      filename: 'bundle.[hash].js',
     },
     module: {
       rules: [
         {
           test: /\.js$/,
           use: 'babel-loader',
-          exclude: /node_modules/
         },
         {
           test: /\.css$/,
@@ -51,8 +51,35 @@ module.exports = (env, options) => {
             'html-loader',
           ]
         },
-        { test: require.resolve('jquery-mousewheel'), loader: "imports-loader?define=>false&this=>window" },
-        { test: require.resolve('malihu-custom-scrollbar-plugin'), loader: "imports-loader?define=>false&this=>window" }
+        //{ test: require.resolve('jquery-mousewheel'), loader: "imports-loader?define=>false&this=>window" },
+        //{ test: require.resolve('malihu-custom-scrollbar-plugin'), loader: "imports-loader?define=>false&this=>window" },
+
+        { 
+          test: require.resolve('jquery-mousewheel'), 
+          use: [
+            {
+              loader: 'imports-loader',
+              options: {
+                wrapper: 'this.window',
+                additionalCode:
+                'var define = false; /* Disable AMD for misbehaving libraries */',
+              },
+            }
+          ]
+        },
+        {
+          test: require.resolve('malihu-custom-scrollbar-plugin'),
+          use: [
+            {
+              loader: 'imports-loader',
+              options: {
+                wrapper: 'this.window',
+                additionalCode:
+                'var define = false; /* Disable AMD for misbehaving libraries */',
+              },
+            }
+          ]
+        }
       ],
     },
     plugins: [

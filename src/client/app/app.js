@@ -3,8 +3,7 @@ import Toposort from 'toposort-class';
 import d3 from 'd3';
 import io from 'socket.io-client';
 import 'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css';
-import './app.scss'
-
+import './app.scss';
 'use strict';
 
 angular.module('editorApp', [
@@ -14,7 +13,7 @@ angular.module('editorApp', [
   'ngRoute',
   'ui.bootstrap',
   'cfp.hotkeys',
-  'ngScrollbars'
+  'ngScrollbars',
 ])
   .config(function ($routeProvider, $locationProvider, ScrollBarsProvider) {
     $routeProvider
