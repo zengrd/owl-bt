@@ -29,8 +29,7 @@ exports.index = function(req, res, next) {
 
 };
 
-/*
-暂时不需要，有需要后续再加
+
 
 function traverseFolder(folderPath) {
   const result = [];
@@ -65,13 +64,15 @@ exports.fileList = function(req, res, next) {
     res.contentType('application/json').send(result);
   }
   else{
-    default_dir = path.join(__dirname, '../../../bin/templates');
+    let default_dir = path.join(__dirname, '../../../../bin/templates');
     let result = traverseFolder(default_dir);
     res.contentType('application/json').send(result);
   }
-  return
+  return;
 };
 
+/*
+暂时不需要，有需要后续再加
 
 exports.parentFileList = function(req, res, next) {
   let projectDir = req.query.path;

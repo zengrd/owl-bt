@@ -2,9 +2,9 @@
     'use strict';
   
     class OpenTreeAction {
-      constructor(ActionExecutor, TreeStore, AlertList) {
+      constructor(ActionExecutor, ProjectStore, AlertList) {
         this._ActionExecutor = ActionExecutor;
-        this._TreeStore = TreeStore;
+        this._ProjectStore = ProjectStore;
         this._AlertList = AlertList;
       }
   
@@ -12,7 +12,7 @@
         let _this = this;
         this._ActionExecutor.exec({
           exec: () => {
-            return _this._TreeStore.open();
+            return _this._ProjectStore.openProject();
           }
         });
       }

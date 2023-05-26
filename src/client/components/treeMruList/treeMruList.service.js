@@ -2,7 +2,7 @@
 
 (function () {
     const itemsStorageKey = 'TreeMruList.items',
-        maxItemCnt = 20; //TODO: cfg
+        maxItemCnt = 100; //TODO: cfg
 
     class TreeMruList {
         constructor(_) {
@@ -37,6 +37,7 @@
             this._.remove(items, { path: treePath });
             localStorage.setItem(itemsStorageKey, JSON.stringify(items));
         }
+
     }
 
     angular.module('editorApp')

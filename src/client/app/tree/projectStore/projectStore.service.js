@@ -2,7 +2,7 @@
 
 (function () {
   class ProjectStore {
-    constructor(_, io, $interpolate, $resource, $rootScope, Toposort) {
+    constructor(_, io, $interpolate, $resource, $rootScope, Toposort, $location, $http, TreeMruList) {
       //this.treePath = $location.search().path;
       this.isLoaded = false;
       this.version = 1;
@@ -12,6 +12,10 @@
       this._$interpolate = $interpolate;
       this._$rootScope = $rootScope;
       this.Toposort = Toposort;
+      this._location = $location;
+      this._http = $http;
+      this.TreeMruList = TreeMruList
+
 
       this._projectResource = $resource('api/project?path=:treePath', {
         treePath: '@treePath'
@@ -28,6 +32,18 @@
       this._currentPromise = null;
 
       return this._current();
+    }
+    
+    openProject() {
+      this._http.get('api/project/fileList')
+      .then(response => {
+        const data = response.data;
+        for(const file of data){
+          this.TreeMruList.register(file.path);
+        }
+        this._location.path('/');
+      })
+      .catch(error => console.error(error));
     }
 
     ensureLoad() {
