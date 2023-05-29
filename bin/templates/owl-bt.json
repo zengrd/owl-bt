@@ -1,44 +1,70 @@
 {
     "nodes": [
         {
-            "name": "Selector",
+            "name": "selector",
             "icon": "question",
             "isComposite": true
         },
         {
-            "name": "Sequence",
+            "name": "sequence",
             "icon": "arrow-right",
             "isComposite": true
+        },
+        {
+            "name": "parallel",
+            "icon": "bars",
+            "isComposite": true
+        },
+        {
+            "name": "condition",
+            "icon": "filter",
+            "isComposite": true
+        },
+        {
+            "name": "findNearbyPlayer.js",
+            "icon": "magnifying-glass",
+            "isComposite": false
+        },
+        {
+            "name": "moveToTarget.js",
+            "icon": "person-walking",
+            "isComposite": false
+        },
+        {
+            "name": "patrol",
+            "icon": "user-police",
+            "isComposite": false
+        },
+        {
+            "name": "tryAttack",
+            "icon": "knife",
+            "isComposite": false
+        },
+        {
+            "name": "tryPick",
+            "icon": "hand",
+            "isComposite": false
+        },
+        {
+            "name": "tryTalkToNpc",
+            "icon": "comment",
+            "isComposite": false
         }
+        
     ],
     "decorators": [
         {
-            "name": "Failure",
-            "icon": "thumbs-o-down"
+            "name": "if",
+            "icon": "check"
         },
         {
-            "name": "Invert",
-            "icon": "exchange"
-        },
-        {
-            "name": "Success",
-            "icon": "thumbs-o-up"
-        },
-        {
-            "name": "IsBlackboardValueSet",
-            "icon": "table",
-            "description": "Is blackboard value \"{{Field}}\" set",
-            "properties": [
-                {
-                    "name": "Field",
-                    "type": "string"
-                }
-            ]
+            "name": "loop",
+            "icon": "circle"
         }
     ],
     "services": [
         {
-            "name": "Sample service",
+            "name": "sample service",
             "icon": "cog",
             "description": "sample service",
             "properties": [

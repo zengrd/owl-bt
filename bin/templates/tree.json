@@ -1,4 +1,45 @@
 {
-	"type": "Selector",
-	"name": "rootNode"
+	"type": "selector",
+	"name": "rootNode",
+	"childNodes": [
+		{
+			"type": "sequence",
+			"childNodes": [
+				{
+					"type": "condition",
+					"properties": [
+						{
+							"name": "cond",
+							"value": "have_target"
+						}
+					],
+					"label": "have_target",
+					"decorators": [
+						{
+							"type": "if"
+						}
+					],
+					"childNodes": [
+						{
+							"type": "tryAttack"
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "sequence",
+			"childNodes": [
+				{
+					"type": "findNearbyPlayer.js"
+				},
+				{
+					"type": "tryPick"
+				},
+				{
+					"type": "tryTalkToNpc"
+				}
+			]
+		}
+	]
 }
