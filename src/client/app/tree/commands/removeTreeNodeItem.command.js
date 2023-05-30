@@ -49,7 +49,7 @@
         service: 'RemoveTreeNodeItemCommand',
         name: 'core:Remove',
         icon: 'times',
-        hotkey: 'del'
+        hotkey: 'backspace'
       });
 
       CommandContextMenuCfgProvider.addMenuItem({
