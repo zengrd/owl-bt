@@ -3,7 +3,7 @@
 (function () {
 
   class TreeStore {
-    constructor($q, $resource, $location, TreeNodeProvider, ProjectStore, TreeNodeDtoConverter, $rootScope, Tree, TreeNode, MissingNodeItemDescValidation, TreeNodeItem) {
+    constructor($q, $resource, TreeNodeProvider, ProjectStore, TreeNodeDtoConverter, $rootScope, Tree, TreeNode, MissingNodeItemDescValidation, TreeNodeItem) {
       // this.treePath = $location.search().path;
       this.version = 1;
 
@@ -12,7 +12,6 @@
       this._treeResource = $resource('api/tree?path=:treePath', {
         treePath: '@treePath'
       });
-      this._location = $location
       this._$q = $q;
       this._TreeNodeProvider = TreeNodeProvider;
       this._ProjectStore = ProjectStore;
@@ -64,10 +63,6 @@
       return resource.$save({
         treePath: this.treePath
       });
-    }
-
-    open() {
-      this._location.path('/');
     }
 
     allItemPropertiesAreValid() {
